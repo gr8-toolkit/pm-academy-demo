@@ -1,0 +1,3 @@
+## PM Academy - .Net Stream - Demo Repo
+
+This is the place to keep pieces of code and other demo stuff...
