@@ -14,7 +14,7 @@ namespace School.Tests.Unit.Services
     public class MessageProcessorTests
     {
         [Fact]
-        public async Task ProcessMessagesAsync_should_process_messages()
+        public async Task ProcessMessages_Should_Process_Messages()
         {
             var batchSize = 5;
 
@@ -49,7 +49,7 @@ namespace School.Tests.Unit.Services
         }
 
         [Fact]
-        public async Task ProcessMessagesAsync_should_process_all_messages_despite_exceptions()
+        public async Task ProcessMessages_Should_Process_All_Messages_despite_Exceptions()
         {
             var batchSize = 6;
 

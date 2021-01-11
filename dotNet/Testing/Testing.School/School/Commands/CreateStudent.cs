@@ -38,7 +38,7 @@ namespace School.Commands
 
         protected override async Task RunAsync(CreateStudent command, ValidationResult result, CancellationToken cancellationToken)
         {
-            var courseById = await _unitOfWork.StudentsRepository.FindByIdAsync(command.StudentId, cancellationToken);
+            var courseById = await _unitOfWork.StudentsRepository.FindById(command.StudentId, cancellationToken);
             if (null != courseById)
                 result.AddError(nameof(CreateStudent.StudentId), $"there is already a student with id {command.StudentId}");
         }
@@ -55,8 +55,8 @@ namespace School.Commands
         protected override async Task RunCommand(CreateStudent command, CancellationToken cancellationToken)
         {
             var newCourse = new Student(command.StudentId, command.StudentFirstname, command.StudentLastname);
-            await _unitOfWork.StudentsRepository.CreateAsync(newCourse, cancellationToken);
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.StudentsRepository.Create(newCourse, cancellationToken);
+            await _unitOfWork.Commit(cancellationToken);
         }
     }
 }

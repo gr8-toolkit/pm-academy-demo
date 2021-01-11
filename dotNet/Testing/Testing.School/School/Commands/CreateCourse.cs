@@ -58,7 +58,7 @@ namespace School.Commands
         {
             var newCourse = new Course(command.CourseId, command.CourseTitle);
             await _unitOfWork.CoursesRepository.CreateAsync(newCourse, cancellationToken);
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.Commit(cancellationToken);
         }
     }
 }

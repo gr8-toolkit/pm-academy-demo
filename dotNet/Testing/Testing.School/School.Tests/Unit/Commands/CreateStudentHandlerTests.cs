@@ -11,14 +11,14 @@ namespace School.Tests.Unit.Commands
     public class CreateStudentHandlerTests
     {
         [Fact]
-        public async Task Handle_should_create_entity()
+        public async Task Handle_Should_Create_Entity()
         {
-            var repo = NSubstitute.Substitute.For<IStudentsRepository>();
+            var repo = Substitute.For<IStudentsRepository>();
 
-            var unitOfWork = NSubstitute.Substitute.For<ISchoolUnitOfWork>();
+            var unitOfWork = Substitute.For<ISchoolUnitOfWork>();
             unitOfWork.StudentsRepository.ReturnsForAnyArgs(repo);
 
-            var validator = NSubstitute.Substitute.For<IValidator<CreateStudent>>();
+            var validator = Substitute.For<IValidator<CreateStudent>>();
             validator.ValidateAsync(null, CancellationToken.None)
                 .ReturnsForAnyArgs(ValidationResult.Successful);
 
@@ -27,8 +27,8 @@ namespace School.Tests.Unit.Commands
             var command = new CreateStudent(Guid.NewGuid(), "new","student");
             await sut.Handle(command, CancellationToken.None);
 
-            repo.Received(1).CreateAsync(Arg.Is((Student c) => c.Id == command.StudentId && c.FirstName == command.StudentFirstname && c.LastName == command.StudentLastname), Arg.Any<CancellationToken>());
-            unitOfWork.Received(1).CommitAsync(Arg.Any<CancellationToken>());
+            await repo.Received(1).Create(Arg.Is((Student c) => c.Id == command.StudentId && c.FirstName == command.StudentFirstname && c.LastName == command.StudentLastname), Arg.Any<CancellationToken>());
+            await unitOfWork.Received(1).Commit(Arg.Any<CancellationToken>());
         }
     }
 }

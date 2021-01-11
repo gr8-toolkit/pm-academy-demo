@@ -12,12 +12,12 @@ namespace School.Tests.Unit.Commands
     public class CreateStudentValidatorTests
     {
         [Fact]
-        public async Task ValidateAsync_should_fail_when_Student_with_same_id_already_exists()
+        public async Task Validate_Should_Fail_When_Student_With_Same_Id_Already_Exists()
         {
             var student = new Student(Guid.NewGuid(), "existing", "Student");
 
             var repo = NSubstitute.Substitute.For<IStudentsRepository>();
-            repo.FindByIdAsync(Arg.Any<Guid>(), Arg.Any<CancellationToken>())
+            repo.FindById(Arg.Any<Guid>(), Arg.Any<CancellationToken>())
                 .ReturnsForAnyArgs(student);
 
             var unitOfWork = NSubstitute.Substitute.For<ISchoolUnitOfWork>();
@@ -33,7 +33,7 @@ namespace School.Tests.Unit.Commands
         }
 
         [Fact]
-        public async Task ValidateAsync_should_succeed_when_command_valid()
+        public async Task ValidateAsync_Should_Succeed_When_Command_Valid()
         {
             var unitOfWork = NSubstitute.Substitute.For<ISchoolUnitOfWork>();
             var sut = new CreateStudentValidator(unitOfWork);

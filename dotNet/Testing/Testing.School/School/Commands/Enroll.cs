@@ -36,7 +36,7 @@ namespace School.Commands
             if (courseById is null)
                 result.AddError(nameof(Enroll.CourseId), $"invalid course id {command.CourseId}");
 
-            var studentById = await _unitOfWork.StudentsRepository.FindByIdAsync(command.StudentId, cancellationToken);
+            var studentById = await _unitOfWork.StudentsRepository.FindById(command.StudentId, cancellationToken);
             if (studentById is null)
                 result.AddError(nameof(Enroll.StudentId), $"invalid student id {command.StudentId}");
         }
@@ -53,11 +53,11 @@ namespace School.Commands
         protected override async Task RunCommand(Enroll command, CancellationToken cancellationToken)
         {
             var course = await _unitOfWork.CoursesRepository.FindByIdAsync(command.CourseId, cancellationToken); 
-            var student = await _unitOfWork.StudentsRepository.FindByIdAsync(command.StudentId, cancellationToken);
+            var student = await _unitOfWork.StudentsRepository.FindById(command.StudentId, cancellationToken);
 
             student.Add(course);
 
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.Commit(cancellationToken);
         }
     }
 }
