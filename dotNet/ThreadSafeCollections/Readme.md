@@ -1,0 +1,12 @@
+Includes
+- Collections with synchronization
+- Generic collections with synchronization
+- Concurent collections
+  - ConcurrentDictionary
+  - BlockingCollection
+  - IProducerConsumerCollection
+    - ConcurrentBag
+    - ConcurrentStack
+    - ConcurrentQueue
+- PLINQ
+- Parallel
