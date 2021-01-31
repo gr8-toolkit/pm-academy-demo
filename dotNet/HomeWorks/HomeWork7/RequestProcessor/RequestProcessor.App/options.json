@@ -1,0 +1,18 @@
+﻿[
+  {
+    "name": "NBU Rates (JSON)",
+    "address": "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json",
+    "method": "GET",
+    "contentType": null,
+    "body": null,
+    "path": "nbu_rates.json"
+  },
+  {
+    "name": "NBU Rates (XML)",
+    "address": "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?xml",
+    "method": "GET",
+    "contentType": null,
+    "body": null,
+    "path": "nbu_rates.xml"
+  }
+]
