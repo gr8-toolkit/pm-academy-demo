@@ -6,7 +6,7 @@ namespace DesignPatterns.UnitTests
 {
     public class IoCContainerTests
     {
-        private IServiceCollection _services;
+        private readonly IServiceCollection _services;
 
         public IoCContainerTests()
         {
@@ -26,8 +26,8 @@ namespace DesignPatterns.UnitTests
             SomeSingleton second = provider.GetService<SomeSingleton>();
 
             Assert.Equal(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -41,8 +41,8 @@ namespace DesignPatterns.UnitTests
             SomeSingleton second = provider.GetService<SomeSingleton>();
 
             Assert.Equal(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -56,8 +56,8 @@ namespace DesignPatterns.UnitTests
             SomeSingleton second = provider.GetService<SomeSingleton>();
 
             Assert.Equal(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -72,8 +72,8 @@ namespace DesignPatterns.UnitTests
             SomeSingleton second = serviceProvider.GetService<SomeSingleton>();
 
             Assert.Equal(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -88,8 +88,8 @@ namespace DesignPatterns.UnitTests
             SomeTransient second = provider.GetService<SomeTransient>();
 
             Assert.NotEqual(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -103,8 +103,8 @@ namespace DesignPatterns.UnitTests
             SomeTransient second = provider.GetService<SomeTransient>();
 
             Assert.NotEqual(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -118,8 +118,8 @@ namespace DesignPatterns.UnitTests
             SomeTransient second = serviceProvider.GetService<SomeTransient>();
 
             Assert.NotEqual(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
         }
 
         [Fact]
@@ -135,9 +135,9 @@ namespace DesignPatterns.UnitTests
             SomeSecondTransient second = serviceProvider.GetService<SomeSecondTransient>();
 
             Assert.NotEqual(second, first);
-            Assert.Equal(first.Counter, 1);
-            Assert.Equal(second.Counter, 1);
-            Assert.Equal(sing.Counter, 1);
+            Assert.Equal(1, first.Counter);
+            Assert.Equal(1, second.Counter);
+            Assert.Equal(1, sing.Counter);
         }
     }
 }
