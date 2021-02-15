@@ -1,0 +1,7 @@
+{
+  "primesFrom": 1,
+  "primesTo": 1000,
+  "SomeSection": {
+    "someName": "some value" 
+  } 
+}
