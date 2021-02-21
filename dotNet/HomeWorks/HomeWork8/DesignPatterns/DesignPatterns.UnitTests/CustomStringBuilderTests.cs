@@ -21,6 +21,17 @@ namespace DesignPatterns.UnitTests
         }
 
         [Fact]
+        public void ResultLengthTest()
+        {
+            ICustomStringBuilder sb = new CustomStringBuilder("Hello! My name is Michael0");
+            sb.AppendLine();
+
+            string actual = sb.Build();
+
+            Assert.Equal("Hello! My name is Michael0\n".Length, actual.Length);
+        }
+
+        [Fact]
         public void EmptyTest()
         {
             ICustomStringBuilder sb = new CustomStringBuilder();
