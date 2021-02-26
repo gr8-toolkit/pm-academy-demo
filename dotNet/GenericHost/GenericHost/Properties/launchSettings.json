@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "GenericHost": {
+      "commandName": "Project",
+      "commandLineArgs": "--primesTo 99",
+      "environmentVariables": {
+        "GH_SomeSection__someName": "some other value",
+        "GH_primesFrom": "0"
+      }
+    }
+  }
+}
