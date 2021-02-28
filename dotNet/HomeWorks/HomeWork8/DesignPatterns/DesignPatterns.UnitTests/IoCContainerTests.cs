@@ -253,6 +253,19 @@ namespace DesignPatterns.UnitTests
         }
 
         [Fact]
+        public void OnAddExceptionsTest()
+        {
+            _services.AddSingleton<BrokenType>();
+            _services.AddSingleton<SomeSingleton>(() => throw new NetworkInformationException());
+            _services.AddSingleton<SomeSingleton>(p => throw new NetworkInformationException());
+            _services.AddTransient<BrokenType>();
+            _services.AddTransient<SomeTransient>(() => throw new NetworkInformationException());
+            _services.AddTransient<SomeTransient>(p => throw new NetworkInformationException());
+
+            Assert.True(true);
+        }
+
+        [Fact]
         public void AddSingletonStructTest()
         {
             _services.AddSingleton<StructSingleton>(new StructSingleton(1234567));
