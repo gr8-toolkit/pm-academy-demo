@@ -58,5 +58,22 @@ namespace DesignPatterns.UnitTests
             result = stringMutator.Mutate(null);
             Assert.Null(result);
         }
+
+        [Fact]
+        public void SingleNextTest()
+        {
+            IStringMutator sut = new ToUpperMutator();
+            IStringMutator stringMutator2 = new InvertMutator();
+            IStringMutator stringMutator3 = new RemoveNumbersMutator();
+            IStringMutator stringMutator4 = new TrimMutator();
+
+            sut.SetNext(stringMutator2);
+            sut.SetNext(stringMutator3);
+            sut.SetNext(stringMutator4);
+
+            string actual = sut.Mutate("    some2345Text        ");
+
+            Assert.Equal("SOME2345TEXT", actual);
+        }
     }
 }
