@@ -53,5 +53,21 @@ namespace DesignPatterns.UnitTests
 
             Assert.Equal("The quick brown fox jumps over the lazy dog", text);
         }
+
+        [Fact]
+        public void StaticBufferTest()
+        {
+            ICustomStringBuilder sb1 = new CustomStringBuilder();
+            sb1.AppendLine("some text 1");
+            ICustomStringBuilder sb2 = new CustomStringBuilder();
+            sb2.AppendLine("some text 2");
+
+            string text1 = sb1.Build();
+            string text2 = sb2.Build();
+
+            Assert.NotEqual(text1, text2);
+            Assert.Equal("some text 1\n", text1);
+            Assert.Equal("some text 2\n", text2);
+        }
     }
 }
