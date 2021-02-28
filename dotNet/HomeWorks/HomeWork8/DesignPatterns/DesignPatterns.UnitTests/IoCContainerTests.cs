@@ -293,5 +293,17 @@ namespace DesignPatterns.UnitTests
             Assert.Equal(second, first);
             Assert.Equal(987654, first.SomeValue);
         }
+
+        [Fact]
+        public void MultiBuildTest()
+        {
+            _services.AddTransient(provider => new SomeSecondTransient(provider.GetService<SomeSingleton>()));
+            _services.AddSingleton<SomeSingleton>();
+
+            IServiceProvider serviceProvider1 = _services.BuildServiceProvider();
+            IServiceProvider serviceProvider2 = _services.BuildServiceProvider();
+
+            Assert.NotSame(serviceProvider1, serviceProvider2);
+        }
     }
 }
