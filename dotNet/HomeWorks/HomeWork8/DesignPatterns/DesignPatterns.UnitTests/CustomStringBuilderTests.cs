@@ -12,12 +12,15 @@ namespace DesignPatterns.UnitTests
 
             sb.Append("The quick brown fox")
                 .AppendLine()
-                .Append("jumps over the lazy dog")
-                .Append('.');
+                .AppendLine("jumps over the")
+                .Append("lazy")
+                .Append(' ')
+                .Append("dog")
+                .AppendLine('!');
 
             string text = sb.Build();
 
-            Assert.Equal("The quick brown fox\njumps over the lazy dog.", text);
+            Assert.Equal("The quick brown fox\njumps over the\nlazy dog!\n", text);
         }
 
         [Fact]
