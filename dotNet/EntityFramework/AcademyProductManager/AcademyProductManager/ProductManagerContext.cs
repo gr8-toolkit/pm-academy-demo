@@ -16,7 +16,6 @@ namespace AcademyProductManager
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.LogTo(Console.WriteLine);
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=qwerty");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
