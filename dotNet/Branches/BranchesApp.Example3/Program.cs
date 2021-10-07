@@ -6,27 +6,23 @@ namespace BranchesApp.Example3
     {
         static void Main()
         {
-            int month = 3;
-            if ((month >= 1 && month <= 2) || month == 12)
+            int amount = 10;
+            string operation = "DEBIT";
+            
+            /*
+            int result;
+            if (operation == "CREDIT")
             {
-                Console.WriteLine("Winter");
-            }
-            else if (month >= 3 && month <= 5)
-            {
-                Console.WriteLine("Spring");
-            }
-            else if (month >= 6 && month <= 8)
-            {
-                Console.WriteLine("Summer");
-            }
-            else if (month >= 9 && month <= 1)
-            {
-                Console.WriteLine("Autumn");
+                result = amount;
             }
             else
             {
-                Console.WriteLine("Invalid month");
+                result = -1 * amount;
             }
+            */
+
+            int result = operation == "CREDIT" ? amount : -1 * amount;
+            Console.WriteLine(result);
         }
     }
 }

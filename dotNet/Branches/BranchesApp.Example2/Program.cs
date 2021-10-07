@@ -2,21 +2,37 @@
 
 namespace BranchesApp.Example2
 {
+    class User
+    {
+        public int Age { get; set; }
+        public bool Verified { get; set; }
+    }
+
     class Program
     {
         static void Main()
         {
-            int age = 19;
-            Welcome(age);
-        }
+            var user = new User { Age = 24, Verified = true };
 
-        static void Welcome(int age)
-        {
-            if (age < 18 || age > 199)
+            if (user is null)
             {
-                throw new ArgumentOutOfRangeException(nameof(age));
+                Console.WriteLine("User is null");
             }
-            Console.WriteLine("Welcome");
+
+            if (user is not null)
+            {
+                Console.WriteLine("User is not null");
+            }
+
+            if (user is User { Age: 18, Verified: true })
+            {
+                Console.WriteLine("User is verified and 18 years old");
+            }
+
+            if (user is User { Age: >= 18 and <= 65 })
+            {
+                Console.WriteLine("User can work");
+            }
         }
     }
 }

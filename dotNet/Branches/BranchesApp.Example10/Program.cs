@@ -2,41 +2,70 @@
 
 namespace BranchesApp.Example10
 {
-    internal class Employee
+    public class Program
     {
-        public string Name { get; set; }
-    }
-
-
-    class Program
-    {
-        static void Main(string[] args)
+        public abstract class Shape
         {
-            Console.WriteLine("Hello Employee!");
-            
-            Employee[] employees = null;
-            PrintEmployee(employees?[1]);
+            public double Area { get; set; }
         }
 
-        static void PrintEmployee(Employee employee)
+        public class Triangle : Shape
         {
-            //var emp = employee ?? throw new ArgumentNullException(nameof(employee));
-            string name = null;
+        }
 
-            // 1. W/O any checks
-            //name = employee.Name;
+        public class Rect : Shape
+        {
+        }
 
-            // 2. with ?. and ?? check
-            //name = employee?.Name;
+        public class Line
+        {
+            public double Length { get; set; }
+        }
 
-            // 3. with ?. and ?? check
-            //name = employee?.Name ?? "<null>";
+        static void Main()
+        {
+            PrintNumber(4);
+            PrintGeometry(new Rect { Area = 1000d });
+            PrintGeometry2(new Rect { Area = 42d });
+        }
 
-            // 4. with ??=
-            employee ??= new Employee { Name = "Jack" };
-            name = employee.Name;
-            
-            Console.WriteLine(name);
+        private static void PrintNumber(int number)
+        {
+            var someValue = number switch
+            {
+                1 => "1",
+                >= 2 and <= 5 => "More or equal than 2 and less or equal than 5",
+                _ => "Unknown value"
+            };
+
+            Console.WriteLine("Value is {0}", someValue);
+        }
+
+        private static void PrintGeometry(object geometry)
+        {
+            var someValue = geometry switch
+            {
+                Shape shape => $"Shape is {shape.Area} m2",
+                Line line => $"Line is {line.Length} m",
+                _ => "Unknown value"
+            };
+
+            Console.WriteLine("Value is {0}", someValue);
+        }
+
+        private static void PrintGeometry2(Shape shape)
+        {
+            var someValue = shape switch
+            {
+                Triangle { Area: > 100 } triangle => $"Big triangle is {triangle.Area}",
+                Triangle triangle => $"Triangle is {triangle.Area}",
+                Rect rect when rect.Area > 100 => $"Big rect is {rect.Area}",
+                Rect rect => $"Rect is {rect.Area}",
+                { Area: 100 } => "Area is 100",
+                _ => "Unknown value"
+            };
+
+            Console.WriteLine("Value is {0}", someValue);
         }
     }
 }
