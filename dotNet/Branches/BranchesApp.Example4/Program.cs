@@ -2,27 +2,41 @@
 
 namespace BranchesApp.Example4
 {
+    internal class Employee
+    {
+        public string Name { get; set; }
+    }
+
+
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            int amount = 10;
-            string operation = "DEBIT";
+            Console.WriteLine("Hello Employee!");
             
-            /*
-            int result;
-            if (operation == "CREDIT")
-            {
-                result = amount;
-            }
-            else
-            {
-                result = -1 * amount;
-            }
-            */
+            Employee[] employees = null;
+            PrintEmployee(employees?[1]);
+        }
 
-            int result = operation == "CREDIT" ? amount : -1 * amount;
-            Console.WriteLine(result);
+        static void PrintEmployee(Employee employee)
+        {
+            //var emp = employee ?? throw new ArgumentNullException(nameof(employee));
+            string name = null;
+
+            // 1. W/O any checks
+            //name = employee.Name;
+
+            // 2. with ?. check
+            //name = employee?.Name;
+
+            // 3. with ?. and ?? check
+            //name = employee?.Name ?? "<null>";
+
+            // 4. with ??=
+            employee ??= new Employee { Name = "Jack" };
+            name = employee.Name;
+            
+            Console.WriteLine(name);
         }
     }
 }
