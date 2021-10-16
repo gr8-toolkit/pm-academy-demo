@@ -3,11 +3,19 @@ using System.IO;
 
 namespace Files.FileExamples.Example3
 {
-    class Program
+    /// <summary>
+    /// Demo for <see cref="File"/>.
+    /// Demo for lines enumeration <see cref="File.ReadLines"/>.
+    /// </summary>
+    internal class Program
     {
-        static void Main()
+        /// <summary>
+        /// Entry point.
+        /// </summary>
+        private static void Main()
         {
             var time = $"{DateTime.Now:F}\n";
+
             File.AppendAllText("timelog.txt", time);
             Console.WriteLine("Time-log was updated");
 

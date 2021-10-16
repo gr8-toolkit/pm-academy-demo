@@ -5,14 +5,23 @@ using System.Text;
 
 namespace Files.Streams.Example2
 {
-    class Program
+    /// <summary>
+    /// String gzip compressor.
+    /// Demo for <see cref="Stream"/>.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry point.
+        /// </summary>
+        private static void Main()
         {
             Console.Write("String to compress : ");
             var input = Console.ReadLine();
+            
             while (string.IsNullOrEmpty(input))
             {
+                // use while loop to wait for correct input
                 input = Console.ReadLine();
             }
 
