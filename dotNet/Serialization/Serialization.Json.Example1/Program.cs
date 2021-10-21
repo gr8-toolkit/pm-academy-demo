@@ -20,7 +20,7 @@ namespace Serialization.Json.Example1
             };
 
             // Serialize
-            var json = JsonSerializer.Serialize(son,options);
+            var json = JsonSerializer.Serialize(son, options);
             Console.WriteLine(json);
             
             // Deserialize back

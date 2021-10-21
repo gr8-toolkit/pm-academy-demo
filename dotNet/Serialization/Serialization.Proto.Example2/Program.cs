@@ -10,9 +10,13 @@ namespace Serialization.Proto.Example2
         static void Main()
         {
             var person = new Person("Max", 29);
+            
             using var stream = new MemoryStream();
             Serializer.Serialize(stream, person);
+            
+            // Move stream cursor to beginning
             stream.Seek(0, SeekOrigin.Begin);
+            
             var clone = Serializer.Deserialize<Person>(stream);
             person.Name = "New name";
             Console.WriteLine($"Source: {person}; clone: {clone}");

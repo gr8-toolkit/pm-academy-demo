@@ -19,7 +19,7 @@ namespace Serialization.Binary.Example2
         }
 
         /// <summary>
-        /// Shallow clone (1st level fields only)
+        /// Shallow clone (1st level fields only).
         /// </summary>
         public PersonCloneable Clone()
         {
@@ -27,18 +27,26 @@ namespace Serialization.Binary.Example2
         }
 
         /// <summary>
-        /// Deep copy of object graph.
+        /// Deep copy of object graph with <see cref="BinaryFormatter"/>.
         /// </summary>
+        /// <remarks>
+        /// BinaryFormatter serialization is obsolete and should not be used. 
+        /// See https://aka.ms/binaryformatter for more information.
+        /// </remarks>
         public PersonCloneable DeepClone()
         {
             using var stream = new MemoryStream();
             var formatter = new BinaryFormatter();
 
+            #pragma warning disable SYSLIB0011 // BinaryFormatter is obsolete
+            
             formatter.Serialize(stream, this);
-
+            
             stream.Seek(0, SeekOrigin.Begin);
             var clone = formatter.Deserialize(stream);
             return (PersonCloneable)clone;
+
+            #pragma warning restore SYSLIB0011 // BinaryFormatter is obsolete
         }
     }
 
