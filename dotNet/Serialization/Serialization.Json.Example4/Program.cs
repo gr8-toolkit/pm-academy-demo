@@ -1,12 +1,11 @@
 ﻿using Serialization.Data;
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
-namespace Serialization.Json.Example3
+namespace Serialization.Json.Example4
 {
     /// <summary>
-    /// Standard System.Text.Json serialization/deserialization example.
+    /// Standard System.Text.Json JsonDocument example.
     /// </summary>
     class Program
     {
@@ -32,10 +31,21 @@ namespace Serialization.Json.Example3
             // Serialize object to string
             var json = JsonSerializer.Serialize(son, options);
             Console.WriteLine(json);
-            
-            // Deserialize back
-            var clone = JsonSerializer.Deserialize<Person>(json, options);
-            Console.WriteLine(clone);
+
+            // Creates JsonDocument from string
+            // JsonDocument is immutable (read-only)
+            var document = JsonDocument.Parse(json);
+
+            // Tries to get value of 'root.parent1.fullName'
+            // No JPath support (net5.0)
+            var value = document
+                .RootElement
+                .GetProperty("parent1")
+                .GetProperty("fullName")
+                .GetString();
+
+            // Writes property value to console
+            Console.WriteLine("'root.parent1.fullName' = {0}", value);
         }
     }
 }
