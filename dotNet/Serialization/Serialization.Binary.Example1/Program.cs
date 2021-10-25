@@ -6,13 +6,20 @@ using Serialization.Data;
 #pragma warning disable SYSLIB0011 // BinaryFormatter is obsolete
 namespace Serialization.Binary.Example1
 {
+    /// <summary>
+    /// Binary formatter demo
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Entry point.
+        /// </summary>
         static void Main()
         {
             var objects = new object[] {"some string", new Exception("Random error"), 42};
             var index = new Random().Next(0, objects.Length);
 
+            // Deserialize random object
             using var stream = Serialize(objects[index]);
             
             var something = Deserialize(stream);

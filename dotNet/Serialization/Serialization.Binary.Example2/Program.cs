@@ -50,16 +50,28 @@ namespace Serialization.Binary.Example2
         }
     }
 
+    /// <summary>
+    /// Binary formatter clonning demo.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Entry point.
+        /// </summary>
         static void Main()
         {
+            //Create objects to clone
             var mother = new PersonCloneable("Mom", 49);
             var father = new PersonCloneable("Dad", 50);
             var origin = new PersonCloneable("Son", 29, mother, father);
+            
+            // Make shallow copy
             var clone = origin.Clone();
+            
+            // Make deep copy
             var deepClone = origin.DeepClone();
 
+            // Change field value in origin
             origin.Parent1.Name = "NewName";
             Console.WriteLine(
                 $"origin.Parent1: {origin.Parent1}, " +
