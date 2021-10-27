@@ -15,10 +15,10 @@ namespace Serialization.Proto.Example2
         /// </summary>
         static void Main()
         {
-            // Creates person to clone
+            // Create person to clone
             var person = new Person("Max", 29);
 
-            //Creates memory stream to keep serialized data
+            //Create memory stream to keep serialized data
             using var stream = new MemoryStream();
             
             // Serialize person to stream

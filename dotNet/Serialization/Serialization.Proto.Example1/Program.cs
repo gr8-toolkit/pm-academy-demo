@@ -17,11 +17,11 @@ namespace Serialization.Proto.Example1
             Console.WriteLine("Hello World!");
             var person = new Person {Name = "Max", Age = 29};
 
-            //Creates memory stream to keep serialized data
+            //Create memory stream to keep serialized data
             using var memStream = new MemoryStream();
             using var stream = new CodedOutputStream(memStream);
 
-            // Writes person data to the stream
+            // Write person data to the stream
             person.WriteTo(stream);
             stream.Flush();
             
