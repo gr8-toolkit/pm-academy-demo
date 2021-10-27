@@ -1,69 +1,51 @@
 ﻿using Serialization.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Serialization.Json.Example5
 {
     /// <summary>
-    /// Contract with variable part - ExtensionData.
-    /// </summary>
-    internal class PersonExtended : Person
-    {
-        /// <summary>
-        /// Extension data container.
-        /// It will be filled with <see cref="System.Text.Json.JsonElement"/> 
-        /// instead of pure <see cref="System.Object"/>.
-        /// </summary>
-        [JsonExtensionData]
-        public Dictionary<string, object> ExtensionData { get; set; }
-    }
-
-    /// <summary>
-    /// Standard System.Text.Json JsonExtensionData example.
+    /// Standard System.Text.Json JsonDocument example.
     /// </summary>
     class Program
     {
-        // JsonSerializer settings
-        private static readonly JsonSerializerOptions options = new()
-        {
-            // Use formatting with 'new line' and 'tab'
-            WriteIndented = true,
-            // Use camelCase naming for properties
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        };
-
         /// <summary>
         /// Entry point.
         /// </summary>
         static void Main()
         {
-            // Extended json
-            var json = "{" +
-                "\"fullName\": \"Son\"," +
-                "\"age\": 29," +
-                "\"intExtraProp\": 42," +
-                "\"strExtraProp\": \"extra\"," +
-                "\"objExtraProp\": {\"inner\": 96}" +
-                "}";
+            // Creates family tree
+            var mother = new Person("Mom", 49);
+            var father = new Person("Dad", 50);
+            var son = new Person("Son", 29, mother, father);
 
-            // Deserialize json
-            var person = JsonSerializer.Deserialize<PersonExtended>(json, options);
+            // JsonSerializer settings
+            var options = new JsonSerializerOptions
+            {
+                // Use formatting with 'new line' and 'tab'
+                WriteIndented = true,
+                // Use camelCase naming for properties
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
 
-            // Join ExtensionData as string
-            var personExtenedData = string.Join(
-                Environment.NewLine,
-                person.ExtensionData.Select(kv => $"[{kv.Key}]='{kv.Value}'"));
-            
-            // Writes person content to console
-            Console.WriteLine(person);
-            Console.WriteLine(personExtenedData);
-
-            // Serialize person back to JSON
-            json = JsonSerializer.Serialize(person, options);
+            // Serialize object to string
+            var json = JsonSerializer.Serialize(son, options);
             Console.WriteLine(json);
+
+            // Creates JsonDocument from string
+            // JsonDocument is immutable (read-only)
+            var document = JsonDocument.Parse(json);
+
+            // Tries to get value of 'root.parent1.fullName'
+            // No JPath support (net5.0)
+            var value = document
+                .RootElement
+                .GetProperty("parent1")
+                .GetProperty("fullName")
+                .GetString();
+
+            // Writes property value to console
+            Console.WriteLine("'root.parent1.fullName' = {0}", value);
         }
     }
 }
