@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Hw0.Exercise1": {
+      "commandName": "Project",
+      "commandLineArgs": "demo command line args"
+    }
+  }
+}
