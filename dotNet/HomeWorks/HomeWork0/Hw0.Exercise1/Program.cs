@@ -7,7 +7,7 @@
     /// -or-
     /// use 'Test Explorer' window in MS Visual Studio
     /// -or-
-    /// use Test menu in JB Rided
+    /// use 'Test' menu in JB Rided
     /// </summary>
     class Program
     {
