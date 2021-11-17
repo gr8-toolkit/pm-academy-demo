@@ -11,7 +11,6 @@ namespace Hw0.Exercise1
         /// Runs echo application.
         /// Prints <paramref name="args"/> to the output.
         /// Arguments will be joined with the white spaces. 
-        /// New line separator will be added to the end of the resulted string.
         /// </summary>
         /// <param name="args">Echo arguments.</param>
         /// <returns>Return <c>0</c> in case of success.</returns>
@@ -20,7 +19,7 @@ namespace Hw0.Exercise1
             if (args != null && args.Length > 0)
             {
                 var echo = string.Join(' ', args);
-                Console.WriteLine(echo);
+                Console.Write(echo);
             }
             return 0;
         }

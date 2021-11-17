@@ -9,12 +9,12 @@
     /// -or-
     /// use 'Test' menu in JB Rided
     /// </summary>
-    class Program
+    internal class Program
     {
         /// <summary>
         /// Application entry point.
         /// </summary>
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             var app = new EchoApplication();
             return app.Run(args);

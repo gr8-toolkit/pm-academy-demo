@@ -3,6 +3,7 @@ using Hw0.Tests.Tools;
 using System;
 using Xunit;
 
+#pragma warning disable CA1707 // Identifiers should not contain underscores
 namespace Hw0.Tests
 {
     public class EchoApplicationTests
@@ -36,9 +37,9 @@ namespace Hw0.Tests
         }
 
         [Theory]
-        [InlineData(new[] {"hello"}, "hello")]
-        [InlineData(new[] {"hello", "world"}, "hello world")]
-        [InlineData(new[] {"hello", "world", "WITH", "digits", "1", "2", "3"}, "hello world WITH digits 1 2 3")]
+        [InlineData(new[] { "hello" }, "hello")]
+        [InlineData(new[] { "hello", "world" }, "hello world")]
+        [InlineData(new[] { "hello", "world", "WITH", "digits", "1", "2", "3" }, "hello world WITH digits 1 2 3")]
         public void Run_WithValidArgs_WithoutErrors(string[] args, string expected)
         {
             using var output = ConsoleOutputInterceptor.InterceptOutput();
@@ -53,10 +54,11 @@ namespace Hw0.Tests
         }
 
         [Theory]
-        [InlineData(new[] { null, "" }, "")]
+        [InlineData(new[] { null, "" }, " ")]
         [InlineData(new[] { "hello", "", "world" }, "hello  world")]
-        [InlineData(new[] { "hello", null, "world", null }, "hello  world")]
-        [InlineData(new[] { "hello", "\n", "world", null }, "hello \n world")]
+        [InlineData(new[] { "hello", null, null, "world", null }, "hello   world ")]
+        [InlineData(new[] { "hello", "\n", "world", null }, "hello \n world ")]
+
         public void Run_WithCorruptedArgs_WithoutErrors(string[] args, string expected)
         {
             using var output = ConsoleOutputInterceptor.InterceptOutput();
@@ -71,3 +73,4 @@ namespace Hw0.Tests
         }
     }
 }
+#pragma warning restore CA1707 // Identifiers should not contain underscores
