@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace DataStructuresExample
+namespace Common.DataStructures
 {
     public class LinkedList<T> : IEnumerable<T>
     {
