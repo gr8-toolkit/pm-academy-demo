@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ReferenceTypesExample.Custom
+namespace Common.ReferenceTypes
 {
+    public interface IHello
+    {
+        void Hello();
+        void Hello(string name);
+    }
+
     public class HelloUser : IHello
     {
         private const string DefaultUserName = "Student";

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace DataStructuresExample
+namespace Common.DataStructures
 {
     /// <summary>
     /// Represents a simple last-in-first-out (LIFO) non-generic collection of objects.

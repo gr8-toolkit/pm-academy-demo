@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructuresExample
+namespace Common.DataStructures
 {
     /// <summary>
     /// Represents a first-in, first-out collection of objects.
