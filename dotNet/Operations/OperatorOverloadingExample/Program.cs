@@ -10,6 +10,8 @@ namespace OperatorOverloadingExample
             Console.WriteLine("OperatorOverloadingExample");
 
             var f150 = new F150(300);
+            var f150M2 = new F150(300);
+            var f150Sum = f150 + f150M2;
             var mustang = new Mustang(400);
             mustang <<= 12;                         // 400 << 12 = 1638400
             var power2 = 400 << 12;                 // 1638400

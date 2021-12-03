@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnumFlagExample.Custom
+namespace Common.Enums
 {
     [Flags]
     public enum DayFlagInt32

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnumFlagExample.Custom
+namespace Common.Enums
 {
-
-    [Flags]
-    public enum DayFlags : short
+    public enum DayInt32Pow2 : short
     {
         Undefined = 0,
         Monday = 1,

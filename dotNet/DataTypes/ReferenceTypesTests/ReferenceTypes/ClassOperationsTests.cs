@@ -44,9 +44,6 @@ namespace DataTypesTests.ReferenceTypes
             Assert.Equal(ResultStr, example3.Foo);
             Assert.Equal(ResultNumb, example3.Bar);
 
-            Assert.Equal(ResultStr, example3.Foo);
-            Assert.Equal(ResultNumb, example3.Bar);
-
             Assert.Equal(default, example4.Foo);
             Assert.Equal(default, example4.Bar);
 

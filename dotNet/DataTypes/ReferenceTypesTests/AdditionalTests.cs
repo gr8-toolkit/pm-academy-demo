@@ -39,7 +39,7 @@ namespace DataTypesTests
         }
 
         [Fact]
-        public void Reverence_Tuple()
+        public void Reference_Tuple()
         {
             // Act
             Tuple<int, string> example1 = new Tuple<int, string>(InitialNumb, InitialStr);

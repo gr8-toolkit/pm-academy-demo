@@ -23,5 +23,6 @@ namespace OperatorOverloadingExample.Custom
         public static bool operator >(F150 x, F150 y) => x.Power > y.Power;
         public static bool operator <=(F150 x, F150 y) => x.Power <= y.Power;
         public static bool operator >=(F150 x, F150 y) => x.Power >= y.Power;
+
     }
 }
