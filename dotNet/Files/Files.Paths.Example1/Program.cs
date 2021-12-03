@@ -4,9 +4,15 @@ using System.Reflection;
 
 namespace Files.Paths.Example1
 {
-    class Program
+    /// <summary>
+    /// Demo for <see cref="Path"/>.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry point.
+        /// </summary>
+        private static void Main()
         {
             var location = Assembly.GetExecutingAssembly().Location;
 

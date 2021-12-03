@@ -4,8 +4,15 @@ using System.Linq;
 
 namespace Files.Directories.Example6
 {
-    class Program
+    /// <summary>
+    /// Simple command line interpreter.
+    /// Demo for <see cref="Directory"/>.
+    /// </summary>
+    internal class Program
     {
+        /// <summary>
+        /// Entry point.
+        /// </summary>
         static void Main()
         {
             PrintHelp();

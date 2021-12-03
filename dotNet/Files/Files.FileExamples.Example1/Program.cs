@@ -5,9 +5,16 @@ using System.Text;
 
 namespace Files.FileExamples.Example1
 {
-    class Program
+    /// <summary>
+    /// Demo for <see cref="File"/>.
+    /// For <see cref="File.AppendAllText"/> and <see cref="File.ReadAllText"/>.
+    /// </summary>
+    internal class Program
     {
-        static void Main()
+        /// <summary>
+        /// Entry point.
+        /// </summary>
+        private static void Main()
         {
             var time = $"{DateTime.Now:F}\n";
             File.AppendAllText("timelog.txt", time);

@@ -1,42 +1,29 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Files.FileExamples.Example5
 {
-    class Program
+    /// <summary>
+    /// Demo for <see cref="File"/> async API.
+    /// For <see cref="File.AppendAllTextAsync"/> and <see cref="File.ReadAllTextAsync"/>.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry point.
+        /// </summary>
+        private static async Task Main()
         {
-            // useful for logs with lot of \n
+            var time = $"{DateTime.Now:F}\n";
 
-            Console.WriteLine(@"File \n splitter");
-            var inputFile = args.FirstOrDefault() ?? "input.txt";
-            
-            if (string.IsNullOrEmpty(inputFile) || !File.Exists(inputFile))
-            {
-                Console.WriteLine($"Invalid input file {inputFile}");
-                return;
-            }
+            await File.AppendAllTextAsync("timelog.txt", time);
+            Console.WriteLine("Time-log was updated asynchronously");
 
-            using var stream = File.OpenWrite("result.txt");
-            using var writer = new StreamWriter(stream);
-            foreach (var line in File.ReadLines(inputFile))
-            {
-                foreach (var split in line.Split(@"\n"))
-                {
-                    writer.WriteLine(split);
-                }
-                // Write all data immediately - just for Flush demo
-                writer.Flush();
-            }
-
-            // Alternative way with LINQ
-            //var splits = File.ReadLines(inputFile).SelectMany(line => line.Split(@"\n"));
-            //foreach (var split in splits)
-            //{
-            //    writer.WriteLine(split);
-            //}
+            var text = await File.ReadAllTextAsync("timelog.txt");
+            Console.WriteLine("Timelog content :");
+            Console.WriteLine(text);
         }
     }
 }

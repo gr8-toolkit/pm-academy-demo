@@ -1,36 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BranchesApp.Example9
 {
-    class Program
+    public class Program
     {
+        public abstract class Shape
+        {
+            public double Square { get; set; }
+        }
+
+        public class Triangle : Shape
+        {
+        }
+
+        public class Rect : Shape
+        {
+        }
+
+        public class Line
+        {
+            public double Length { get; set; }
+        }
+
         static void Main()
         {
-            MonthsMapping(3);
-            SeasonMapping(3);
+            PrintGeometry(new Rect {Square = 1000d});
+            PrintGeometry2(new Rect {Square = -42d});
         }
 
-        private static void MonthsMapping(int monthNumber)
+        private static void PrintGeometry(object geometry)
         {
-            string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-            var month = months[monthNumber - 1];
-            Console.WriteLine("{0} is {1}", month, monthNumber);
-        }
-
-
-        private static void SeasonMapping(int monthNumber)
-        {
-            Dictionary<int, string> months = new Dictionary<int, string>
+            switch (geometry)
             {
-                [1] = "Winter", [2] = "Winter", [12] = "Winter",
-                [3] = "Spring", [4] = "Spring", [5] = "Spring",
-                [6] = "Summer", [7] = "Summer", [8] = "Summer",
-                [9] = "Autumn", [10] = "Autumn", [11] = "Autumn"
-            };
-            var season = months[monthNumber];
-            Console.WriteLine("{0} month is {1}", monthNumber, season);
+                case Shape shape : 
+                    Console.WriteLine("Shape is {0} m2", shape.Square);
+                    break;
+                case Line line:
+                    Console.WriteLine("Line is {0} m", line.Length);
+                    break;
+                default:  throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void PrintGeometry2(object geometry)
+        {
+            switch (geometry)
+            {
+                case Shape shape when shape.Square < 0:
+                    Console.WriteLine("Shape is invalid");
+                    break;
+                case Shape shape:
+                    Console.WriteLine("Shape is {0} m2", shape.Square);
+                    break;
+                case Line line:
+                    Console.WriteLine("Line is {0} m", line.Length);
+                    break;
+                default: throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
