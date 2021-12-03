@@ -5,43 +5,45 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SysIo", "SysIo", "{D69CF13F-2EB7-4F68-8B26-B0CDC08046D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.SysIo.Example1", "Files.SysIo.Example1\Files.SysIo.Example1.csproj", "{7E1FA455-B3C3-4A26-96E3-0AAD4BA8CD95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.SysIo.Example1", "Files.SysIo.Example1\Files.SysIo.Example1.csproj", "{7E1FA455-B3C3-4A26-96E3-0AAD4BA8CD95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Directories", "Directories", "{8AC5C3ED-8054-424A-8517-2FD547AAFFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example1", "Files.Directories.Example1\Files.Directories.Example1.csproj", "{B53DB92B-F839-4F10-BC27-23BE38C2075E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example1", "Files.Directories.Example1\Files.Directories.Example1.csproj", "{B53DB92B-F839-4F10-BC27-23BE38C2075E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example2", "Files.Directories.Example2\Files.Directories.Example2.csproj", "{A031895D-C540-49C3-A609-AED55F1DF9D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example2", "Files.Directories.Example2\Files.Directories.Example2.csproj", "{A031895D-C540-49C3-A609-AED55F1DF9D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example3", "Files.Directories.Example3\Files.Directories.Example3.csproj", "{633357C2-3845-4E2F-9BE6-2A70F88BDE2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example3", "Files.Directories.Example3\Files.Directories.Example3.csproj", "{633357C2-3845-4E2F-9BE6-2A70F88BDE2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example4", "Files.Directories.Example4\Files.Directories.Example4.csproj", "{C9379D12-C58E-4540-A497-485A2E4916D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example4", "Files.Directories.Example4\Files.Directories.Example4.csproj", "{C9379D12-C58E-4540-A497-485A2E4916D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example5", "Files.Directories.Example5\Files.Directories.Example5.csproj", "{9DEC534E-DE14-4261-B40A-E350F9CD0D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example5", "Files.Directories.Example5\Files.Directories.Example5.csproj", "{9DEC534E-DE14-4261-B40A-E350F9CD0D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Directories.Example6", "Files.Directories.Example6\Files.Directories.Example6.csproj", "{E48095EB-553F-4394-B7E0-E79BAC46064C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Directories.Example6", "Files.Directories.Example6\Files.Directories.Example6.csproj", "{E48095EB-553F-4394-B7E0-E79BAC46064C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Paths", "Paths", "{B374BCF2-A9F3-43AC-9D3E-9B109CF31F89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Paths.Example1", "Files.Paths.Example1\Files.Paths.Example1.csproj", "{95FAC65C-485C-41CF-AA5E-E56EE3DECD1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Paths.Example1", "Files.Paths.Example1\Files.Paths.Example1.csproj", "{95FAC65C-485C-41CF-AA5E-E56EE3DECD1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{31F56DC7-00FB-446C-95F5-4A849A6015C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.FileExamples.Example1", "Files.FileExamples.Example1\Files.FileExamples.Example1.csproj", "{352D807E-FFBE-4FE0-A5D3-4F3B063492C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example1", "Files.FileExamples.Example1\Files.FileExamples.Example1.csproj", "{352D807E-FFBE-4FE0-A5D3-4F3B063492C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.FileExamples.Example2", "Files.FileExamples.Example2\Files.FileExamples.Example2.csproj", "{8549FF8E-B9F6-4401-BD2C-9771A667FFA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example2", "Files.FileExamples.Example2\Files.FileExamples.Example2.csproj", "{8549FF8E-B9F6-4401-BD2C-9771A667FFA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.FileExamples.Example3", "Files.FileExamples.Example3\Files.FileExamples.Example3.csproj", "{0213AFC0-C4DF-43CF-8937-29C4F96E56F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example3", "Files.FileExamples.Example3\Files.FileExamples.Example3.csproj", "{0213AFC0-C4DF-43CF-8937-29C4F96E56F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.FileExamples.Example4", "Files.FileExamples.Example4\Files.FileExamples.Example4.csproj", "{6F332781-53B5-4A5D-8831-F3AF4F2F0DD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example4", "Files.FileExamples.Example4\Files.FileExamples.Example4.csproj", "{6F332781-53B5-4A5D-8831-F3AF4F2F0DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.FileExamples.Example5", "Files.FileExamples.Example5\Files.FileExamples.Example5.csproj", "{FD82D004-846E-41EA-BEB2-4EF0C99F4F04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example5", "Files.FileExamples.Example5\Files.FileExamples.Example5.csproj", "{FD82D004-846E-41EA-BEB2-4EF0C99F4F04}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Streams", "Streams", "{CA44E59D-3087-4303-97C2-823B2492F305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Streams.Example1", "Files.Streams.Example1\Files.Streams.Example1.csproj", "{3DB49F51-5B3F-422E-8F0F-DA3C4C27106B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Streams.Example1", "Files.Streams.Example1\Files.Streams.Example1.csproj", "{3DB49F51-5B3F-422E-8F0F-DA3C4C27106B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Files.Streams.Example2", "Files.Streams.Example2\Files.Streams.Example2.csproj", "{13651842-2EA7-416C-84BC-152BDFCAC66A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.Streams.Example2", "Files.Streams.Example2\Files.Streams.Example2.csproj", "{13651842-2EA7-416C-84BC-152BDFCAC66A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Files.FileExamples.Example6", "Files.FileExamples.Example6\Files.FileExamples.Example6.csproj", "{7F3F190F-8B1C-479B-A3D9-3235D471F3DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{13651842-2EA7-416C-84BC-152BDFCAC66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13651842-2EA7-416C-84BC-152BDFCAC66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13651842-2EA7-416C-84BC-152BDFCAC66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3F190F-8B1C-479B-A3D9-3235D471F3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3F190F-8B1C-479B-A3D9-3235D471F3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3F190F-8B1C-479B-A3D9-3235D471F3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3F190F-8B1C-479B-A3D9-3235D471F3DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{FD82D004-846E-41EA-BEB2-4EF0C99F4F04} = {31F56DC7-00FB-446C-95F5-4A849A6015C1}
 		{3DB49F51-5B3F-422E-8F0F-DA3C4C27106B} = {CA44E59D-3087-4303-97C2-823B2492F305}
 		{13651842-2EA7-416C-84BC-152BDFCAC66A} = {CA44E59D-3087-4303-97C2-823B2492F305}
+		{7F3F190F-8B1C-479B-A3D9-3235D471F3DB} = {31F56DC7-00FB-446C-95F5-4A849A6015C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F50DECC6-5DCB-4C9A-849C-6437E2E189C2}

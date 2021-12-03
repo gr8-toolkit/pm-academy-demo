@@ -1,61 +1,133 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace BranchesApp.Example8
 {
-    public class Program
+    class Program
     {
-        public abstract class Shape
+        public enum State
         {
-            public double Square { get; set; }
+            Invisible,
+            Disabled,
+            Visible
         }
 
-        public class Triangle : Shape
+        public class NetworkException : Exception
         {
-        }
+            public int StatusCode { get; set; }
 
-        public class Rect : Shape
-        {
-        }
-
-        public class Line
-        {
-            public double Length { get; set; }
-        }
-
-        static void Main()
-        {
-            PrintGeometry(new Rect {Square = 1000d});
-            PrintGeometry2(new Rect {Square = -42d});
-        }
-
-        private static void PrintGeometry(object geometry)
-        {
-            switch (geometry)
+            public NetworkException(string message, int code) : base(message)
             {
-                case Shape shape : 
-                    Console.WriteLine("Shape is {0} m2", shape.Square);
-                    break;
-                case Line line:
-                    Console.WriteLine("Line is {0} m", line.Length);
-                    break;
-                default:  throw new ArgumentOutOfRangeException();
+                StatusCode = code;
             }
         }
 
-        private static void PrintGeometry2(object geometry)
+        public static State ButtonState { get; set; }
+
+        static void Main()
         {
-            switch (geometry)
+            TypicalSwitch();
+            
+            Console.WriteLine(DataMapping("W"));
+            
+            Commands("STOP", 100d);
+            
+            Click();
+
+            PrintError(new NetworkException("Oops! Error", 404));
+            
+            PrintError2(new NetworkException("Oops! Timeout Error", 408));
+        }
+
+        private static void TypicalSwitch()
+        {
+            int month = 3;
+            switch (month)
             {
-                case Shape shape when shape.Square < 0:
-                    Console.WriteLine("Shape is invalid");
+                case 1:
+                case 2:
+                case 12:
+                    Console.WriteLine("Winter");
                     break;
-                case Shape shape:
-                    Console.WriteLine("Shape is {0} m2", shape.Square);
+                case 3:
+                case 4:
+                case 5:
+                    Console.WriteLine("Spring");
                     break;
-                case Line line:
-                    Console.WriteLine("Line is {0} m", line.Length);
+                case 6:
+                case 7:
+                case 8:
+                    Console.WriteLine("Summer");
                     break;
+                case 9:
+                case 10:
+                case 11:
+                    Console.WriteLine("Autumn");
+                    break;
+                default:
+                    Console.WriteLine("Invalid month");
+                    break;
+            }
+        }
+        
+        private static string DataMapping(string direction)
+        {
+            switch (direction)
+            {
+                case "N": return "North";
+                case "E": return "East";
+                case "S": return "South";
+                case "W": return "West";
+                default: return direction;
+            }
+        }
+
+        private static void Commands(string command, double speed)
+        {
+            switch (command)
+            {
+                case "FASTER": speed += 10; break;
+                case "SLOWER": speed -= 10; break;
+                case "STOP": speed = 0; break;
                 default: throw new ArgumentOutOfRangeException();
+            }
+            Console.WriteLine(speed);
+        }
+        
+        private static void Click()
+        {
+            switch (ButtonState)
+            {
+                case State.Invisible:
+                case State.Disabled:
+                    break;
+                case State.Visible: Console.WriteLine("Click"); break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void PrintError(NetworkException exception)
+        {
+            if (exception == null) throw new ArgumentNullException(nameof(exception));
+            switch (exception.StatusCode)
+            {
+                case 401: Console.WriteLine("Unauthorized"); break;
+                case 404: Console.WriteLine("Not found"); break;
+                default: Console.WriteLine("Unexpected error"); break;
+            }
+        }
+
+        private static void PrintError2(Exception exception)
+        {
+            if (exception == null) throw new ArgumentNullException(nameof(exception));
+            switch (exception)
+            {
+                case TaskCanceledException:
+                case NetworkException ex when ex.StatusCode == 408: 
+                    Console.WriteLine("Timeout"); 
+                    break;
+                default: Console.WriteLine("Unexpected error"); break;
             }
         }
     }

@@ -3,8 +3,14 @@ using System.IO;
 
 namespace Files.Directories.Example5
 {
-    class Program
+    /// <summary>
+    /// Demo for <see cref="Directory.Move"/>.
+    /// </summary>
+    internal class Program
     {
+        /// <summary>
+        /// Entry point.
+        /// </summary>
         static void Main()
         {
             var dir = Directory.GetCurrentDirectory();

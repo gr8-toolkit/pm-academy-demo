@@ -27,11 +27,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Xml.Example2"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{2B180526-44EA-49B2-8D33-04EBCE7AA461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.Json.Example1", "Serialization.Json.Example1\Serialization.Json.Example1.csproj", "{17A05ECF-ED94-4D11-A77C-F3BE78403FAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example1", "Serialization.Json.Example1\Serialization.Json.Example1.csproj", "{17A05ECF-ED94-4D11-A77C-F3BE78403FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.Json.Example2", "Serialization.Json.Example2\Serialization.Json.Example2.csproj", "{1C7574E2-94FA-41FA-B1DF-5840D458447F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example2", "Serialization.Json.Example2\Serialization.Json.Example2.csproj", "{1C7574E2-94FA-41FA-B1DF-5840D458447F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.Json.Example3", "Serialization.Json.Example3\Serialization.Json.Example3.csproj", "{CAFC6F36-FA22-49F5-938B-7F68F84F85A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example3", "Serialization.Json.Example3\Serialization.Json.Example3.csproj", "{CAFC6F36-FA22-49F5-938B-7F68F84F85A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example4", "Serialization.Json.Example4\Serialization.Json.Example4.csproj", "{A918DF8C-D7B9-465A-AEBA-56B169DB95F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example5", "Serialization.Json.Example5\Serialization.Json.Example5.csproj", "{E6CDEC5E-280F-4991-ABEA-F4588DA83347}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Json.Example6", "Serialization.Json.Example6\Serialization.Json.Example6.csproj", "{EEE2876D-216B-4E1F-BB73-009E7052CDFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.Json.Example7", "Serialization.Json.Example7\Serialization.Json.Example7.csproj", "{81727A95-1F18-43F8-B911-F58B2EC27A69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +91,22 @@ Global
 		{CAFC6F36-FA22-49F5-938B-7F68F84F85A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAFC6F36-FA22-49F5-938B-7F68F84F85A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAFC6F36-FA22-49F5-938B-7F68F84F85A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A918DF8C-D7B9-465A-AEBA-56B169DB95F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A918DF8C-D7B9-465A-AEBA-56B169DB95F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A918DF8C-D7B9-465A-AEBA-56B169DB95F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A918DF8C-D7B9-465A-AEBA-56B169DB95F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CDEC5E-280F-4991-ABEA-F4588DA83347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CDEC5E-280F-4991-ABEA-F4588DA83347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CDEC5E-280F-4991-ABEA-F4588DA83347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CDEC5E-280F-4991-ABEA-F4588DA83347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE2876D-216B-4E1F-BB73-009E7052CDFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE2876D-216B-4E1F-BB73-009E7052CDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE2876D-216B-4E1F-BB73-009E7052CDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE2876D-216B-4E1F-BB73-009E7052CDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81727A95-1F18-43F8-B911-F58B2EC27A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81727A95-1F18-43F8-B911-F58B2EC27A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81727A95-1F18-43F8-B911-F58B2EC27A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81727A95-1F18-43F8-B911-F58B2EC27A69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +121,10 @@ Global
 		{17A05ECF-ED94-4D11-A77C-F3BE78403FAB} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
 		{1C7574E2-94FA-41FA-B1DF-5840D458447F} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
 		{CAFC6F36-FA22-49F5-938B-7F68F84F85A8} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
+		{A918DF8C-D7B9-465A-AEBA-56B169DB95F6} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
+		{E6CDEC5E-280F-4991-ABEA-F4588DA83347} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
+		{EEE2876D-216B-4E1F-BB73-009E7052CDFC} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
+		{81727A95-1F18-43F8-B911-F58B2EC27A69} = {2B180526-44EA-49B2-8D33-04EBCE7AA461}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE76D1DE-F965-4F26-A4C2-D59361CB8E48}

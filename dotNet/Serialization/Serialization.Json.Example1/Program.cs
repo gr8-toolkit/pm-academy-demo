@@ -1,30 +1,43 @@
-﻿using Serialization.Data;
-using System;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Serialization.Data;
 
 namespace Serialization.Json.Example1
 {
+    /// <summary>
+    /// Newtonsoft JSON.NET serialization/deserialization example.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Entry point.
+        /// </summary>
         static void Main()
         {
+            // Creates family tree
             var mother = new Person("Mom", 49);
             var father = new Person("Dad", 50);
             var son = new Person("Son", 29, mother, father);
 
-            var options = new JsonSerializerOptions
+            // JsonConvert settings
+            var settings = new JsonSerializerSettings
             {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                // Use formatting with 'new line' and 'tab'
+                Formatting = Formatting.Indented,
+                // Use camelCase naming for properties
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                }
             };
 
-            // Serialize
-            var json = JsonSerializer.Serialize(son,options);
+            // Serialize object to string
+            var json = JsonConvert.SerializeObject(son, settings);
             Console.WriteLine(json);
-            
+
             // Deserialize back
-            var clone = JsonSerializer.Deserialize<Person>(json, options);
+            var clone = JsonConvert.DeserializeObject<Person>(json, settings);
             Console.WriteLine(clone);
         }
     }

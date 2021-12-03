@@ -1,13 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="input.txt" />
-  </ItemGroup>
+    <PropertyGroup>
+	    <OutputType>Exe</OutputType>
+	    <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
 
   <ItemGroup>
     <Content Include="input.txt">
