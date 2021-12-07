@@ -4,7 +4,7 @@ namespace BranchesApp.Example10
 {
     public class Program
     {
-        public abstract class Shape
+        public class Shape
         {
             public double Area { get; set; }
         }
@@ -27,6 +27,7 @@ namespace BranchesApp.Example10
             PrintNumber(4);
             PrintGeometry(new Rect { Area = 1000d });
             PrintGeometry2(new Rect { Area = 42d });
+            var geom = GetGeometry("T");
         }
 
         private static void PrintNumber(int number)
@@ -58,6 +59,7 @@ namespace BranchesApp.Example10
             var someValue = shape switch
             {
                 Triangle { Area: > 100 } triangle => $"Big triangle is {triangle.Area}",
+                Triangle triangle when triangle.Area > 100 => $"Big triangle is {triangle.Area}",
                 Triangle triangle => $"Triangle is {triangle.Area}",
                 Rect rect when rect.Area > 100 => $"Big rect is {rect.Area}",
                 Rect rect => $"Rect is {rect.Area}",
@@ -65,7 +67,17 @@ namespace BranchesApp.Example10
                 _ => "Unknown value"
             };
 
-            Console.WriteLine("Value is {0}", someValue);
+            Console.WriteLine(someValue);
+        }
+
+        private static Shape GetGeometry(string input)
+        {
+            return input switch
+            {
+                "T" => new Triangle(),
+                "R" => new Rect(),
+                _ => new Shape()
+            };
         }
     }
 }
