@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Linq.Example1
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             var numbers = new[] {1, -2, 7, 9, -3};
             var positive = 
