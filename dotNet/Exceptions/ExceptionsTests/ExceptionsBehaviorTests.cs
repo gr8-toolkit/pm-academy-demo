@@ -184,7 +184,7 @@ namespace ExceptionsTests
             {
                 worker.ExecuteWithFallback();
             }
-            catch (FallbackException fex)
+            catch (FallbackException fex) when (fex.InternalData != null)
             {
                 result = (string)fex.InternalData;
             }
