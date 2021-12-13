@@ -5,57 +5,57 @@ using Linq.Data;
 
 namespace Linq.Example2
 {
-    class Program
+    internal static class Program
     {
-        public struct ExampleStruct
+        private struct ExampleStruct
         {
-            public string Value { get; set; }
-            
             public ExampleStruct(string value)
             {
                 Value = value;
             }
+
+            private string Value { get; set; }
         }
 
         private static readonly Person[] People =
         {
-            new Person("Julia", 17),
-            new Person("Max", 34),
-            new Person("John", 19),
-            new Person("Andrew", 42),
+            new("Julia", 17),
+            new("Max", 34),
+            new("John", 19),
+            new("Andrew", 42),
         };
 
-        static void Main(string[] args)
+        private static void Main()
         {
             //Where
-            //WhereExample();
-            //WhereFuncExample();
+            WhereExample();
+            WhereFuncExample();
 
             //// ToList, ToArray, ToDictionary
-            //ToListExample();
+            ToListExample();
             
             //// Select
-            //SelectExample();
+            SelectExample();
             
             //// FirstOrDefault
-            //FirstOrDefaultExample();
-            //FirstStructExample();
+            FirstOrDefaultExample();
+            FirstStructExample();
 
             //// OrderBy
-            //OrderByExample();
+            OrderByExample();
             
             //// Except
-            //ExceptExample();
+            ExceptExample();
             
             //// Sum
-            //SumExample();
+            SumExample();
             
             //// Skip and take
-            //SkipTakeExample();
-            //SkipTakeNumbersExample();
+            SkipTakeExample();
+            SkipTakeNumbersExample();
             
             //// Distinct
-            //DistinctExample();
+            DistinctExample();
             
             //// Any
             AnyExample();
