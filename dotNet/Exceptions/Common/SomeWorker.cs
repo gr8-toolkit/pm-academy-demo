@@ -4,12 +4,18 @@ namespace Common
 {
     public class SomeWorker
     {
-        public string Execute()
+        /// <summary>
+        /// Allowed to return only completed results.
+        /// </summary>
+        public string ExecuteAtomic()
         {
             return ExecuteInternal();
         }
 
-        public string ExecuteWithFallback()
+        /// <summary>
+        /// Allowed to return not completed results.
+        /// </summary>
+        public string ExecuteDirty()
         {
             try
             {
@@ -22,6 +28,9 @@ namespace Common
             }
         }
 
+        /// <summary>
+        /// Tries to return completed results.
+        /// </summary>
         public bool TryExecute(out string result)
         {
             try

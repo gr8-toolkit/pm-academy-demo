@@ -1,5 +1,7 @@
 using Common;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ExceptionsTests
@@ -151,7 +153,7 @@ namespace ExceptionsTests
             worker = new SomeWorker();
             try
             {
-                result = worker.Execute();
+                result = worker.ExecuteAtomic();
             }
             catch (Exception)
             {
@@ -182,7 +184,7 @@ namespace ExceptionsTests
             worker = new SomeWorker();
             try
             {
-                worker.ExecuteWithFallback();
+                worker.ExecuteDirty();
             }
             catch (FallbackException fex) when (fex.InternalData != null)
             {
@@ -204,21 +206,180 @@ namespace ExceptionsTests
         }
 
         [Fact]
-        public void TryHandle_Worker()
+        public async Task Handle_Operation_Cancellation()
         {
             // Act
-            SomeWorker worker;
-            string result;
-            bool success;
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3)); // cancel task after 3 seconds
+            var ct = cts.Token;
+            string result = default;
+            var tcExceptionWorksFlag = false;
+            var ocExceptionWorksFlag = false;
+            var baseExceptionWorksFlag = false;
 
             // Action
-            worker = new SomeWorker();
-            success = worker.TryExecute(out result);
+            try
+            {
+                var stuff = new Stuff();
+                result = await stuff.SomeExpensiveFunc(ct);
+            }
+            catch (TaskCanceledException)
+            {
+                tcExceptionWorksFlag = true;
+            }
+            catch (OperationCanceledException) // includes TaskCanceledException
+            {
+                ocExceptionWorksFlag = true;
+            }
+            catch (Exception)
+            {
+                baseExceptionWorksFlag = true;
+            }
 
             // Assert
-            Assert.NotNull(result);
-            Assert.False(success);
+            Assert.Null(result);
+            Assert.True(tcExceptionWorksFlag);
+            Assert.False(ocExceptionWorksFlag);
+            Assert.False(baseExceptionWorksFlag);
         }
+
+        [Fact]
+        public async Task Handle_Aggregated_Exception()
+        {
+            // Act
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(3)); // cancel task after 3 seconds
+            var ct = cts.Token;
+            string result = default;
+            var tcExceptionWorksFlag = false;
+            var dnfExceptionWorksFlag = false;
+            var agExceptionWorksFlag = false;
+            var baseExceptionWorksFlag = false;
+            DllNotFoundException dllNotFoundException = default;
+            TaskCanceledException taskCanceledException = default;
+
+            // Action
+            try
+            {
+                var stuff = new Stuff();
+                result = await stuff.SomeUnexcpectedFunc(ct);
+            }
+            catch (TaskCanceledException)
+            {
+                tcExceptionWorksFlag = true;
+            }
+            catch (DllNotFoundException)
+            {
+                dnfExceptionWorksFlag = true;
+            }
+            catch (AggregateException ae) when (ae.InnerException != null || ae.InnerExceptions.Count > 0)
+            {
+                agExceptionWorksFlag = true;
+
+                // let's handle known inner exceptions
+                ae.Handle(ex =>
+                {
+                    if (ex is DllNotFoundException dnfException)
+                    {
+                        dllNotFoundException = dnfException;
+                        return true;
+                    }
+
+                    if (ex is TaskCanceledException tcException)
+                    {
+                        taskCanceledException = tcException;
+                        return true;
+                    }
+
+                    // re-throw any unhandled exception
+                    return false;
+                });
+            }
+            catch (Exception)
+            {
+                baseExceptionWorksFlag = true;
+            }
+
+            // Assert
+            Assert.Null(result);
+            Assert.NotNull(dllNotFoundException);
+            Assert.NotNull(taskCanceledException);
+            Assert.False(tcExceptionWorksFlag);
+            Assert.True(agExceptionWorksFlag);
+            Assert.False(dnfExceptionWorksFlag);
+            Assert.False(baseExceptionWorksFlag);
+        }
+
+        [Fact]
+        public async Task ReThrow_Exception()
+        {
+            // Act
+            string error = "error";
+            string result = default;
+            bool handleLevel1Flag = false;
+            bool handleLevel2Flag = false;
+
+
+            // Action
+            try
+            {
+                try
+                {
+                    throw new Exception(error);
+                }
+                catch (Exception level1)
+                {
+                    handleLevel1Flag = true;
+                    throw; // re-throw current error, keep StackTrace
+                    //throw level1; // alsp re-throw current error
+                }
+            }
+            catch (Exception level2)
+            {
+                handleLevel2Flag = true;
+                result = level2.Message;
+            }
+
+            // Assert
+            Assert.True(handleLevel1Flag);
+            Assert.True(handleLevel2Flag);
+            Assert.NotNull(result);
+            Assert.Equal(error, result);
+        }
+
+        [Fact]
+        public async Task ReThrow_New_Exception()
+        {
+            // Act
+            string error1 = "error1", error2 = "error2";
+            string result = default;
+            bool handleLevel1Flag = false, handleLevel2Flag = false;
+
+            // Action
+            try
+            {
+                try
+                {
+                    throw new Exception(error1);
+                }
+                catch (Exception level1)
+                {
+                    handleLevel1Flag = true;
+                    throw new Exception(error2); // throw new error, new StackTrace
+                }
+            }
+            catch (Exception level2)
+            {
+                handleLevel2Flag = true;
+                result = level2.Message;
+            }
+
+            // Assert
+            Assert.True(handleLevel1Flag);
+            Assert.True(handleLevel2Flag);
+            Assert.NotNull(result);
+            Assert.Equal(error2, result);
+        }
+
+
 
     }
 
