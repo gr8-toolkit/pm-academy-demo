@@ -2,6 +2,7 @@
 
 namespace BranchesApp.Example1
 {
+
     class Program
     {
         static void Main()
@@ -9,7 +10,7 @@ namespace BranchesApp.Example1
             Console.WriteLine("Your age : ");
             var input = Console.ReadLine();
             var age = int.Parse(input);
-            
+
             if (age >= 18 && age < 200)
             {
                 Console.WriteLine("Welcome!");
@@ -24,7 +25,7 @@ namespace BranchesApp.Example1
 
         static void Welcome(int age)
         {
-            if (age < 18 || age > 199)
+            if (age < 18 || age >= 200)
             {
                 throw new ArgumentOutOfRangeException(nameof(age));
             }
