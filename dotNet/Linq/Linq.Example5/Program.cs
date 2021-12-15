@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Linq.Example5
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             var numbers = new[] { 1, 20, 300, 4000 };
             

@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Linq.Example6
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var numbers = new[] {-2, 9, 49, -4, 0, 1};
             var result = 

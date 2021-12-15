@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Linq.Example4
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var numbers = new[] {1, 20, 300, 4000};
             var lengths = numbers.Where(n => n > 10).ToStringLengths();
