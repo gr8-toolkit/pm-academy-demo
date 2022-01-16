@@ -2,8 +2,15 @@
 
 namespace Threads.Shared
 {
+    /// <summary>
+    /// Prime numbers finder.
+    /// </summary>
     public class Primes
     {
+        /// <summary>
+        /// Searches prime numbers in range.
+        /// </summary>
+        /// <returns>Returns prime numbers in range.</returns>
         public List<int> FindPrimes(int from, int to)
         {
             var result = new List<int>();

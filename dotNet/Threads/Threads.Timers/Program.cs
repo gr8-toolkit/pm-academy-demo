@@ -3,16 +3,20 @@ using System.Threading;
 
 namespace Threads.Timers
 {
-    class Program
+    /// <summary>
+    /// Timer usage demo.
+    /// Based on <see cref="Timer"/>.
+    /// </summary>
+    internal class Program
     {
         static void Main()
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine($"Hello Timer! [{id}]");
+            Console.WriteLine($"Background timer demo [{id}]");
             
             var t = new Timer(Callback, null, 0, 1_000);
             
-            Console.WriteLine("Press enter to quit!");
+            Console.WriteLine("Press enter to quit...");
             Console.ReadLine();
 
             t.Dispose();
@@ -22,7 +26,7 @@ namespace Threads.Timers
         private static void Callback(object state)
         {
             var id = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine($"[Now] : {DateTime.Now:O} [{id}]");
+            Console.WriteLine($"[{id}] Now : {DateTime.Now:O}");
         }
     }
 }

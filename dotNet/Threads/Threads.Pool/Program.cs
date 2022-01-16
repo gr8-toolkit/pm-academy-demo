@@ -5,14 +5,17 @@ using Threads.Shared;
 
 namespace Threads.Pool
 {
-    class Program
+    /// <summary>
+    /// Thread pool <see cref="ThreadPool"/> demo.
+    /// </summary>
+    internal class Program
     {
         private static readonly object Marker = new object();
         private static readonly CountdownEvent Waiter = new CountdownEvent(3);
 
         static void Main()
         {
-            Console.WriteLine("Hello ThreadPool!");
+            Console.WriteLine("ThreadPool demo");
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -21,8 +24,8 @@ namespace Threads.Pool
             ThreadPool.QueueUserWorkItem(FindPrimes, 1..100_000);
             ThreadPool.QueueUserWorkItem(FindPrimes, 100_000..150_000);
             ThreadPool.QueueUserWorkItem(FindPrimes, 150_000..200_000);
-            
-            // DEMO: ThreadPool working threads changes
+
+            // DEMO: Check ThreadPool working threads cnt changes
             Thread.Sleep(500);
             ThreadPool.GetMaxThreads(out var worker, out var io);
             Console.WriteLine($"MaxThreads : {worker}, {io}");
@@ -33,12 +36,12 @@ namespace Threads.Pool
             ThreadPool.GetAvailableThreads(out worker, out io);
             Console.WriteLine($"AvailableThreads : {worker}, {io}");
 
-            // DEMO: waiting for thread-sync counter 
+            // DEMO: waiting for thread-sync counter (count from 3 to 0)
             Waiter.Wait();
 
             stopwatch.Stop();
 
-            // DEMO: ThreadPool working threads changes
+            // DEMO: Check ThreadPool working threads cnt changes
             Thread.Sleep(500);
             ThreadPool.GetAvailableThreads(out worker, out io);
             Console.WriteLine($"AvailableThreads : {worker}, {io}");
@@ -46,6 +49,13 @@ namespace Threads.Pool
             Console.WriteLine("Elapsed total : {0}", stopwatch.Elapsed);
         }
 
+        private static void PrintThreadDetailsLock()
+        {
+            lock (Marker)
+            {
+                PrintThreadDetails();
+            }
+        }
 
         private static void PrintThreadDetails()
         {
@@ -57,14 +67,6 @@ namespace Threads.Pool
             Console.WriteLine($"Thread [{id}] state {t.ThreadState}");
             Console.WriteLine($"Thread [{id}] started not dead {t.IsAlive}");
             Console.WriteLine($"Thread [{id}] from pool {t.IsThreadPoolThread}");
-        }
-
-        private static void PrintThreadDetailsLock()
-        {
-            lock (Marker)
-            {
-                PrintThreadDetails();
-            }
         }
 
         private static void FindPrimes(object obj)

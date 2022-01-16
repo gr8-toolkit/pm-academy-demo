@@ -1,21 +1,39 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using Threads.Shared;
 
 namespace Threads.ManagedThread
 {
-    class Program
+    /// <summary>
+    /// Demo for managed <see cref="Thread"/>.
+    /// Prints thread deatils with and without sync.
+    /// </summary>
+    internal class Program
     {
-        private static readonly object Marker = new object();
+        private static readonly object Sync = new();
 
         static void Main()
         {
-            Console.WriteLine("Threads World!");
-            
-            PrintThreadDetails();
-            SingleThreadTest();
-            MultiThreadTest();
+            Console.WriteLine("Thread details demo");
+
+            Console.WriteLine("---");
+            Console.WriteLine("Thread details without sync :");
+            MultiThreadDetailsTest(PrintThreadDetails);
+
+            Console.WriteLine("---");
+            Console.WriteLine("Thread details with sync :");
+            MultiThreadDetailsTest(PrintThreadDetailsLock);
+        }
+
+        private static void PrintThreadDetailsLock()
+        {
+            // DEMO: Unhandled exception in thread
+            //throw new InvalidOperationException("Oops!");
+
+            lock (Sync)
+            {
+                PrintThreadDetails();
+            }
         }
 
         private static void PrintThreadDetails()
@@ -30,91 +48,41 @@ namespace Threads.ManagedThread
             Console.WriteLine($"Thread [{id}] from pool {t.IsThreadPoolThread}");
         }
 
-        private static void PrintThreadDetailsLock()
-        {
-            lock (Marker)
-            {
-                PrintThreadDetails();
-            }
-        }
-        
-        private static void SingleThreadTest()
-        {
-            //PrintThreadDetails();
-            var comp = new Primes();
-
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            var primes1 = comp.FindPrimes(1, 100_000);
-            var primes2 = comp.FindPrimes(100_000, 150_000);
-            var primes3 = comp.FindPrimes(150_000, 200_000); // 8.3 sec
-
-            stopwatch.Stop();
-
-            Console.WriteLine("Primes : {0}", primes1.Count + primes2.Count + primes3.Count);
-            Console.WriteLine("Elapsed : {0}", stopwatch.Elapsed);
-        }
-
-        private static void MultiThreadTest()
+        private static void MultiThreadDetailsTest(ThreadStart entryPoint)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var t1 = new Thread(FindPrimes)
+            var t1 = new Thread(entryPoint)
             {
                 Name = "T1", 
                 IsBackground = false
             };
-            t1.Start(1..100_000);
 
-            var t2 = new Thread(FindPrimes)
+            var t2 = new Thread(entryPoint)
             {
                 Name = "T2", 
                 IsBackground = true
             };
-            t2.Start(100_000..150_000);
 
-            var t3 = new Thread(FindPrimes)
+            var t3 = new Thread(entryPoint)
             {
                 Name = "T3",
                 IsBackground = true
             };
-            t3.Start(150_000..200_000);
+            
+            // Start all threads
+            t1.Start();
+            t2.Start();
+            t3.Start();
 
             // Waiting for t1, t2, t3 threads completion 
             t1.Join();
             t2.Join();
             t3.Join();
 
-            stopwatch.Stop();
-
             // DEMO : Suspend current thread
             Thread.Sleep(1000);
-            
-            Console.WriteLine("Elapsed total : {0}", stopwatch.Elapsed);
-        }
-
-        private static void FindPrimes(object obj)
-        {
-            // DEMO : concurrent access to shared resource (Console)
-            //PrintThreadDetails();
-            PrintThreadDetailsLock();
-
-            var range = (Range) obj;
-            var comp = new Primes();
-
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            
-            var primes = comp.FindPrimes(range.Start.Value, range.End.Value);
-            
-            // DEMO: Unhandled exception in thread
-            //throw new InvalidOperationException("Oops!");
-            
-            stopwatch.Stop();
-            Console.WriteLine("Primes : {0}", primes.Count);
-            Console.WriteLine("Elapsed : {0}", stopwatch.Elapsed);
         }
     }
 }
