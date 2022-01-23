@@ -9,7 +9,7 @@ namespace Threads.OverlappedTimers
     /// </summary>
     internal class Program
     {
-        private static readonly object Sync = new object();
+        private static readonly object Sync = new();
 
         static void Main()
         {

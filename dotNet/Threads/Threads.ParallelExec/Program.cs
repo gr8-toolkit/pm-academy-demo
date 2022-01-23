@@ -25,14 +25,14 @@ namespace Threads.ParallelExec
 
         private static void SingleThreadTest()
         {
-            var comp = new Primes();
+            var primes = new Primes();
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var primes1 = comp.FindPrimes(1, 100_000);
-            var primes2 = comp.FindPrimes(100_000, 150_000);
-            var primes3 = comp.FindPrimes(150_000, 200_000); // 2.1 sec
+            var primes1 = primes.FindPrimes(1, 100_000);
+            var primes2 = primes.FindPrimes(100_000, 150_000);
+            var primes3 = primes.FindPrimes(150_000, 200_000); // 2.1 sec
 
             stopwatch.Stop();
 
@@ -45,25 +45,13 @@ namespace Threads.ParallelExec
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var t1 = new Thread(FindPrimes)
-            {
-                Name = "T1",
-                IsBackground = false
-            };
+            var t1 = new Thread(FindPrimes);
             t1.Start(1..100_000);
 
-            var t2 = new Thread(FindPrimes)
-            {
-                Name = "T2",
-                IsBackground = true
-            };
+            var t2 = new Thread(FindPrimes);
             t2.Start(100_000..150_000);
 
-            var t3 = new Thread(FindPrimes)
-            {
-                Name = "T3",
-                IsBackground = true
-            };
+            var t3 = new Thread(FindPrimes);
             t3.Start(150_000..200_000);
 
             // Waiting for t1, t2, t3 threads completion 
@@ -79,15 +67,15 @@ namespace Threads.ParallelExec
         private static void FindPrimes(object obj)
         {
             var range = (Range)obj;
-            var comp = new Primes();
+            var primes = new Primes();
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var primes = comp.FindPrimes(range.Start.Value, range.End.Value);
+            var primeNumbers = primes.FindPrimes(range.Start.Value, range.End.Value);
 
             stopwatch.Stop();
-            Console.WriteLine("Primes : {0} at {1}", primes.Count, stopwatch.Elapsed);
+            Console.WriteLine("Primes : {0} at {1}", primeNumbers.Count, stopwatch.Elapsed);
         }
     }
 }

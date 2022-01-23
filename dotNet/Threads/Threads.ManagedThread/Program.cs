@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 
 namespace Threads.ManagedThread
@@ -17,12 +16,16 @@ namespace Threads.ManagedThread
             Console.WriteLine("Thread details demo");
 
             Console.WriteLine("---");
-            Console.WriteLine("Thread details without sync :");
-            MultiThreadDetailsTest(PrintThreadDetails);
+            Console.WriteLine("Current thread details :");
+            PrintThreadDetails();
 
-            Console.WriteLine("---");
-            Console.WriteLine("Thread details with sync :");
-            MultiThreadDetailsTest(PrintThreadDetailsLock);
+            //Console.WriteLine("---");
+            //Console.WriteLine("Threads details without sync :");
+            //MultiThreadDetailsTest(PrintThreadDetails);
+
+            //Console.WriteLine("---");
+            //Console.WriteLine("Threads details with sync :");
+            //MultiThreadDetailsTest(PrintThreadDetailsLock);
         }
 
         private static void PrintThreadDetailsLock()
@@ -50,9 +53,6 @@ namespace Threads.ManagedThread
 
         private static void MultiThreadDetailsTest(ThreadStart entryPoint)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             var t1 = new Thread(entryPoint)
             {
                 Name = "T1", 

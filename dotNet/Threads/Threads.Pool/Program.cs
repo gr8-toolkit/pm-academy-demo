@@ -10,8 +10,8 @@ namespace Threads.Pool
     /// </summary>
     internal class Program
     {
-        private static readonly object Marker = new object();
-        private static readonly CountdownEvent Waiter = new CountdownEvent(3);
+        private static readonly object Sync = new();
+        private static readonly CountdownEvent Waiter = new(3);
 
         static void Main()
         {
@@ -51,7 +51,7 @@ namespace Threads.Pool
 
         private static void PrintThreadDetailsLock()
         {
-            lock (Marker)
+            lock (Sync)
             {
                 PrintThreadDetails();
             }
