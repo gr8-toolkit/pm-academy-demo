@@ -4,11 +4,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Tasks.Shared;
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 namespace Tasks.Example10
 {
     class Program
     {
         private static readonly object Locker = new object();
+
         static async Task Main()
         {
             Console.WriteLine("Hello Async!");
@@ -26,3 +28,4 @@ namespace Tasks.Example10
         }
     }
 }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously

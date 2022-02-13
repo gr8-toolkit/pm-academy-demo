@@ -47,6 +47,7 @@ namespace Tasks.Shared
                 
                 return Task.FromResult(shortResult);
             }
+
             return Task.Run(() =>
             {
                 var result = new List<int>();
