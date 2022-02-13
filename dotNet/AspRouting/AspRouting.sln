@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30002.166
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspRouting.Mappings", "AspRouting.Mappings\AspRouting.Mappings.csproj", "{46E79877-6619-49CB-8BF4-AA49E9350D07}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspRoutings.Methods", "AspR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspRouting.Data", "AspRouting.Data\AspRouting.Data.csproj", "{EC938A4E-AEA7-4C69-93BA-7AF69D5F1DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspRoutings.Controllers", "AspRoutings.Controllers\AspRoutings.Controllers.csproj", "{5A5D3432-28FF-4B18-8138-9EA5F8AB61D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspRoutings.Controllers", "AspRoutings.Controllers\AspRoutings.Controllers.csproj", "{5A5D3432-28FF-4B18-8138-9EA5F8AB61D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspRouting.MinApi", "AspRouting.MinApi\AspRouting.MinApi.csproj", "{C1E4821C-29C0-4716-9C1B-945BE373B785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5A5D3432-28FF-4B18-8138-9EA5F8AB61D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5D3432-28FF-4B18-8138-9EA5F8AB61D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A5D3432-28FF-4B18-8138-9EA5F8AB61D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E4821C-29C0-4716-9C1B-945BE373B785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E4821C-29C0-4716-9C1B-945BE373B785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E4821C-29C0-4716-9C1B-945BE373B785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E4821C-29C0-4716-9C1B-945BE373B785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
