@@ -24,6 +24,8 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
+app.MapGet("/echo/{*rest}", (string rest) => rest);
+
 app.Run();
 
 internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
